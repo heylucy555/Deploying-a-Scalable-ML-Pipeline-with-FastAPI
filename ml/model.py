@@ -1,7 +1,9 @@
 import pickle
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
-# TODO: add necessary import
+import pandas as pd
+import numpy as np
+
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -19,7 +21,7 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-    # TODO: implement the function
+    
     pass
 
 
@@ -50,7 +52,7 @@ def inference(model, X):
 
     Inputs
     ------
-    model : ???
+    model : kmeans???
         Trained machine learning model.
     X : np.array
         Data used for prediction.
