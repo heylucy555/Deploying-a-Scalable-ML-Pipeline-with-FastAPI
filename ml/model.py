@@ -3,6 +3,7 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
 import pandas as pd
 import numpy as np
+from sklearn.ensemble import RandomForestClassifier
 
 
 # Optional: implement hyperparameter tuning.
@@ -21,6 +22,7 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
+    clf_model = RandomForestClassifier(n_estimators=100, random_state=69)
     
     pass
 
