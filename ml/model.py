@@ -73,7 +73,7 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    # TODO: implement the function
+    
     preds = model.predict(X)
 
     return preds
@@ -88,7 +88,7 @@ def save_model(model, path):
     path : str
         Path to save pickle file.
     """
-    # TODO: implement the function
+   
     # "with open/.dump" implementation
     with open(path,'wb') as f: #serialize model 
         pickle.dump(model, f) 
@@ -96,11 +96,11 @@ def save_model(model, path):
 
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
-    # TODO: implement the function
+    
     #with open/.load 
     #pull file f
 
-    with open('data.pickle','rb') as f:
+    with open(data.pickle,'rb') as f:
         loaded_data = pickle.load(f)
     print (loaded_data)  
     return loaded_data

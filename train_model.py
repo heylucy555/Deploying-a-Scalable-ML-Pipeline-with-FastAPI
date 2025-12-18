@@ -24,7 +24,7 @@ print(data.head())
 
 # TODO: split the provided data to have a train dataset and a test dataset
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
-train, test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=69)
+train, test = train_test_split(data, test_size=0.2, random_state=69)
 
 # DO NOT MODIFY
 cat_features = [
@@ -41,14 +41,15 @@ cat_features = [
 
 X_train, y_train, encoder, lb = process_data( #reference list in data.py
      train,
-     categorical_features=cat_features #from above^
-     label=True
+     categorical_features=cat_features, #from above^
+     label="salary",
+     training = True
     )
 
 X_test, y_test, _, _ = process_data(
     test,
     categorical_features=cat_features,
-    label="workclass", #pick a feature for anlaysis
+    label="salary", #pick a feature for anlaysis
     training=False,
     encoder=encoder,
     lb=lb,
@@ -82,7 +83,7 @@ for col in cat_features:
             test,
             col,
             slicevalue,
-            workclass, #match to earlier pick
+            "salary", #match to earlier pick
             encoder,
             lb,
             model,
