@@ -2,7 +2,9 @@ import pickle
 import sklearn
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
-#TODO: add necessary importsour
+#TODO: add necessary imports
+
+
 print("test")
 
 from sklearn.ensemble import RandomForestClassifier
@@ -28,10 +30,10 @@ def train_model(X_train, y_train):
 
     #RFC/LogReg/SVC/ possible variable
     #Optional: Variable input
-    clf_model = RandomForestClassifier(n_estimators=100, random_state=69)
-    clf_model.fit(X_train, y_train)
+    model = RandomForestClassifier(n_estimators=100, random_state=69)
+    model.fit(X_train, y_train)
 
-    return clf_model
+    return model
     pass
 
 
@@ -72,8 +74,8 @@ def inference(model, X):
         Predictions from the model.
     """
     # TODO: implement the function
-    model_prediction = model.predict(X)
-    return model_prediction
+    model = model.predict(X)
+    return model
 
 def save_model(model, path):
     """ Serializes model to a file.
