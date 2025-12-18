@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 # Optional: implement hyperparameter tuning.
+# data comes split
 def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
@@ -24,8 +25,13 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
+
+    #RFC/LogReg/SVC/ possible variable
+    #Optional: Variable input
     clf_model = RandomForestClassifier(n_estimators=100, random_state=69)
-    
+    clf_model.fit(X_train, y_train)
+
+    return clf_model
     pass
 
 
@@ -56,7 +62,7 @@ def inference(model, X):
 
     Inputs
     ------
-    model : kmeans???
+    model :
         Trained machine learning model.
     X : np.array
         Data used for prediction.
@@ -66,7 +72,8 @@ def inference(model, X):
         Predictions from the model.
     """
     # TODO: implement the function
-    pass
+    model_prediction = model.predict(X)
+    return model_prediction
 
 def save_model(model, path):
     """ Serializes model to a file.
