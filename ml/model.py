@@ -100,7 +100,7 @@ def load_model(path):
     #with open/.load 
     #pull file f
 
-    with open(data.pickle,'rb') as f:
+    with open(path,'rb') as f:
         loaded_data = pickle.load(f)
     print (loaded_data)  
     return loaded_data
