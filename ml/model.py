@@ -142,7 +142,7 @@ def performance_on_categorical_slice(
 
     """
     #slice data
-    d_slice = data[[data.column_name] == slice_value]
+    d_slice = data[data[column_name] == slice_value]
 
     X_slice, y_slice, _, _ = process_data( 
         # your code here

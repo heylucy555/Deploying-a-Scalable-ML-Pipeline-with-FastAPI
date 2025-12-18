@@ -83,6 +83,7 @@ for col in cat_features:
             test,
             col,
             slicevalue,
+            cat_features,
             "salary", #match to earlier pick
             encoder,
             lb,
