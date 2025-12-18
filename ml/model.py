@@ -74,8 +74,9 @@ def inference(model, X):
         Predictions from the model.
     """
     # TODO: implement the function
-    model = model.predict(X)
-    return model
+    preds = model.predict(X)
+
+    return preds
 
 def save_model(model, path):
     """ Serializes model to a file.
@@ -88,13 +89,21 @@ def save_model(model, path):
         Path to save pickle file.
     """
     # TODO: implement the function
-    pass
+    # "with open/.dump" implementation
+    with open(path,'wb') as f: #serialize model 
+        pickle.dump(model, f) 
+    
 
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
     # TODO: implement the function
-    pass
+    #with open/.load 
+    #pull file f
 
+    with open('data.pickle','rb') as f:
+        loaded_data = pickle.load(f)
+    print (loaded_data)  
+    return loaded_data
 
 def performance_on_categorical_slice(
     data, column_name, slice_value, categorical_features, label, encoder, lb, model
@@ -122,7 +131,7 @@ def performance_on_categorical_slice(
         Trained sklearn OneHotEncoder, only used if training=False.
     lb : sklearn.preprocessing._label.LabelBinarizer
         Trained sklearn LabelBinarizer, only used if training=False.
-    model : ???
+    model : RFC
         Model used for the task.
 
     Returns
@@ -132,12 +141,28 @@ def performance_on_categorical_slice(
     fbeta : float
 
     """
-    # TODO: implement the function
-    X_slice, y_slice, _, _ = process_data(
+    #slice data
+    d_slice = data[[data.column_name] == slice_value]
+
+    X_slice, y_slice, _, _ = process_data( 
         # your code here
         # for input data, use data in column given as "column_name", with the slice_value 
         # use training = False
+        
+        #variables for processing
+        #check against list in data.py
+        
+        d_slice, # slice transform
+        categorical_features= categorical_features,
+        label=label,
+        encoder=encoder,
+        lb=lb
+        training=False
+
+        #apply functions to slice
     )
-    preds = None # your code here to get prediction on X_slice using the inference function
+
+
+    preds = inference(model, X_slice) # your code here to get prediction on X_slice using the inference function
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
     return precision, recall, fbeta
