@@ -7,8 +7,6 @@ This project implements a machine learning pipeline that uses logistic regressio
 The pipeline follows the framework designed and provided by Udacity and is deployed as an API using FastAPI
 
 
-For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
-
 ## Model Details
 Model Type: Logistic Regression
 Programming Language: Python
@@ -21,11 +19,11 @@ numpy
 pickle
 fastAPI
 
-The pipeline preprocesses the the categorical variables with one-hot encoding and label binarization.
+The pipeline preprocesses the categorical variables with one-hot encoding and label binarization.
 
 
 ## Intended Use
-This model is intended solely as a demonstrative example. The pipeline details the implementation of a complete model fitting pipeline that cou
+This model is intended solely as a demonstrative example. The pipeline details the implementation of a complete model fitting pipeline.
 
 ## Training Data
 The Training Data comes from the Adult Census Income dataset that was collected in 1994 by the US Census Bureau(https://www.kaggle.com/datasets/uciml/adult-census-income)The dataset contains roughly 32000 samples with the following features. 
