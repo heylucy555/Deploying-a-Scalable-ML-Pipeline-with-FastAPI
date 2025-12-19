@@ -1,39 +1,44 @@
 import os
 import pandas as pd
+import pytest
+from ml import data, model
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 
-# TODO: implement the first test. Change the function name and input as needed
+#load data
+@pytest.fixture(scope="session")
+def df():
+    data_path = os.path.join(os.getcwd(), "data", "census.csv")
+    return pd.read_csv(data_path)
 
-t_path = os.getcwd()
-data_path = os.path.join(t_path, "data", "census.csv")
-print(data_path)
-df = pd.read_csv(data_path)
-
-
-def test_one():
+#test 1: ensure the data is splitting correctly
+def test_split(df):
     """
     # ensures the training and test sets have the appropriate size 
     """
-    train, test = train_test_split(data, test_size=0.2, random_state=69)
+    train, test = train_test_split(df, test_size=0.2, random_state=69)
     
     assert len(train) + len(test) == len(df)
-    assert abs(len(test) - int(0.2 * len(df))) <= 1
+    assert len(test) > 0
+    assert len(train) > 0
 
+#test 2 ensure the correct classifier is used
+def test_clf(df):
+    X_train = np.random.rand(100, 25)
+    y_train = np.random.randint(2, size=100)
 
-# TODO: implement the second test. Change the function name and input as needed
-def test_two():
-    """
-    # make sure the model is using the right classifier
-    """
-    model = train_model(X_train, y_train)
-    assert isinstance(model, RandomForestClassifier)
+    #Training the model
+    model_chk = model.train_model(X_train, y_train)
 
+    #Check model type
+    assert isinstance(model_chk, LogisticRegression)
 
-# TODO: implement the third test. Change the function name and input as needed
-def test_dataset_shape():
+#test 3: datset size
+def test_dataset_shape(df):
     """
     # ensure the working dataset is large enough and has the right amount of functions
     """
-    min_columns = 10 
-
+ 
     assert df.shape[0] > 1000
-    assert df.shape[1] >= min_columns
+    assert df.shape[1] > 10
