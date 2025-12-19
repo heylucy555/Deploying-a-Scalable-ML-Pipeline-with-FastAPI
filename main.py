@@ -47,7 +47,7 @@ async def get_root():
 @app.post("/data/")
 async def post_inference(data: Data):
     # DO NOT MODIFY: turn the Pydantic model into a dict.
-    data_dict = data.dict()
+    data_dict = data.model_dump()
     # DO NOT MODIFY: clean up the dict to turn it into a Pandas DataFrame.
     # The data has names with hyphens and Python does not allow those as variable names.
     # Here it uses the functionality of FastAPI/Pydantic/etc to deal with this.
@@ -71,12 +71,12 @@ async def post_inference(data: Data):
         # do not need to pass lb as input
         data,
         categorical_features=cat_features, #from above
-        label= salary,
-        training=false,
+        label= None,
+        training=False,
         encoder=encoder,
         #no lb
 
 
     )
     _inference = inference(model, data_processed) #refernce in model.py
-    return {"result": apply_label(_inference)}
+    return {"Result": apply_label(_inference)}

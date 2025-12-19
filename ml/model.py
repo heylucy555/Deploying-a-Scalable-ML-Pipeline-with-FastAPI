@@ -7,7 +7,8 @@ from ml.data import process_data
 
 print("test")
 
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier #do not use
+from sklearn.linear_model import LogisticRegression
 
 
 # Optional: implement hyperparameter tuning.
@@ -30,7 +31,7 @@ def train_model(X_train, y_train):
 
     #RFC/LogReg/SVC/ possible variable
     #Optional: Variable input
-    model = RandomForestClassifier(n_estimators=100, random_state=69)
+    model = LogisticRegression() #Use Logistic regression
     model.fit(X_train, y_train)
 
     return model
